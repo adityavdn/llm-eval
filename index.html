@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM Evaluation</title>
+<style>
+  :root { --bg:#f8fafc; --fg:#0f172a; --muted:#64748b; --card:#fff; --line:#e2e8f0; --accent:#2563eb; --good:#16a34a; --bad:#dc2626; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0b1120; --fg:#e2e8f0; --muted:#94a3b8; --card:#111827; --line:#1f2937; --accent:#60a5fa; --good:#4ade80; --bad:#f87171; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.5 system-ui, -apple-system, sans-serif; background:var(--bg); color:var(--fg); }
+  main { max-width:1100px; margin:0 auto; padding:32px 16px 64px; }
+  h1 { margin:0; font-size:28px; letter-spacing:-.02em; }
+  h2 { margin:0 0 12px; font-size:16px; }
+  .sub { color:var(--muted); margin:4px 0 20px; max-width:760px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:12px; }
+  .scroll { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { padding:8px 6px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+  th { color:var(--muted); font-weight:500; font-size:12px; white-space:nowrap; }
+  td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .pct { display:inline-block; min-width:52px; text-align:center; padding:2px 6px; border-radius:6px; font-weight:600; font-variant-numeric:tabular-nums; }
+  .model { font-weight:600; }
+  .muted { color:var(--muted); font-size:12px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:12px; }
+  svg text { fill:var(--muted); font-size:11px; }
+  .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  select { font:inherit; padding:6px 10px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--fg); }
+  .q { border-top:1px solid var(--line); padding:12px 0; }
+  .q:first-child { border-top:0; }
+  .q .prompt { font-weight:600; }
+  .ans { display:grid; grid-template-columns:22px minmax(120px, 200px) 1fr; gap:6px; font-size:13px; padding:2px 0; }
+  .ans code { white-space:pre-wrap; word-break:break-word; font-size:12px; }
+  .ok { color:var(--good); font-weight:700; } .no { color:var(--bad); font-weight:700; }
+  ul { margin:0; padding-left:18px; } li { margin:4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>LLM Evaluation</h1>
+  <p class="sub" id="sub">Loading…</p>
+
+  <div class="card"><h2>Leaderboard</h2><div class="scroll"><table id="board"></table></div>
+    <p class="muted">Cells show the % of questions passed in each category. Latency is the median time for a full answer.</p></div>
+
+  <div class="grid">
+    <div class="card"><h2>Accuracy vs speed</h2><div id="scatter"></div>
+      <p class="muted">Top left is best: accurate and fast.</p></div>
+    <div class="card"><h2>What the categories test</h2><ul>
+      <li><b>Maths</b>: multi-step word problems, checked by the number in the answer.</li>
+      <li><b>Knowledge</b>: facts with one correct answer.</li>
+      <li><b>Reasoning</b>: classic trick questions (bat &amp; ball, letters in "strawberry").</li>
+      <li><b>Instructions</b>: exact formats: word counts, JSON, capitals, banned letters.</li>
+      <li><b>Hallucination traps</b>: questions about things that don't exist. A model passes only if it says so instead of making something up.</li>
+    </ul><p class="muted" id="method"></p></div>
+  </div>
+
+  <div class="card"><h2>Every question and answer</h2>
+    <div class="filters">
+      <select id="fcat"><option value="">All categories</option></select>
+      <select id="fshow"><option value="">All questions</option><option value="split">Models disagreed</option><option value="allfail">Every model failed</option></select>
+    </div>
+    <div id="qs"></div></div>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const median = a => { const s = a.filter(x => x != null).sort((x, y) => x - y); return s.length ? s[s.length >> 1] : null; };
+const shade = p => `background:color-mix(in srgb, ${p >= 50 ? "var(--good)" : "var(--bad)"} ${Math.round(Math.abs(p - 50) / 50 * 35 + 8)}%, transparent)`;
+let D;
+
+fetch("results.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null).then(data => {
+  if (!data) return $("sub").textContent = "No results yet. Run the evaluation first.";
+  D = data;
+  const cats = [...new Set(D.questions.map(q => q.category))];
+  const Q = Object.fromEntries(D.questions.map(q => [q.id, q]));
+  $("sub").textContent = `${D.models.length} open-source language models, the same ${D.questions.length} questions each, scored automatically with no human or AI judge. Run ${D.run_at.replace("T", " ").replace("+00:00", "")} UTC on Groq, temperature 0.`;
+  $("method").textContent = `System prompt given to every model: "${D.system_prompt}"`;
+
+  const stats = D.models.map(m => {
+    const rs = D.results.filter(r => r.model === m);
+    const pct = list => Math.round(100 * list.filter(r => r.pass).length / (list.length || 1));
+    return { m, all: pct(rs), cats: cats.map(c => pct(rs.filter(r => Q[r.qid].category === c))),
+             lat: median(rs.map(r => r.latency_ms)), tok: Math.round(rs.reduce((a, r) => a + (r.tokens || 0), 0) / (rs.length || 1)),
+             errors: rs.filter(r => r.error).length };
+  }).sort((a, b) => b.all - a.all || a.lat - b.lat);
+
+  $("board").innerHTML = `<tr><th>#</th><th>Model</th><th class="num">Overall</th>${cats.map(c => `<th class="num">${esc(c)}</th>`).join("")}
+    <th class="num">Latency</th><th class="num">Tokens/answer</th></tr>` + stats.map((s, i) => `<tr>
+    <td>${i + 1}</td><td class="model">${esc(s.m)}${s.errors ? `<div class="muted">${s.errors} API errors</div>` : ""}</td>
+    <td class="num"><span class="pct" style="${shade(s.all)}">${s.all}%</span></td>
+    ${s.cats.map(p => `<td class="num"><span class="pct" style="${shade(p)}">${p}%</span></td>`).join("")}
+    <td class="num">${s.lat != null ? (s.lat / 1000).toFixed(2) + "s" : "–"}</td><td class="num">${s.tok}</td></tr>`).join("");
+
+  // scatter: x = latency, y = accuracy
+  const W = 500, H = 260, P = 40, maxL = Math.max(...stats.map(s => s.lat || 0), 1) * 1.15;
+  const x = l => P + (l / maxL) * (W - P - 20), y = a => H - P - (a / 100) * (H - P - 20);
+  $("scatter").innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%">
+    <line x1="${P}" y1="${H - P}" x2="${W - 10}" y2="${H - P}" stroke="var(--line)"/><line x1="${P}" y1="10" x2="${P}" y2="${H - P}" stroke="var(--line)"/>
+    ${[0, 50, 100].map(a => `<text x="${P - 6}" y="${y(a) + 4}" text-anchor="end">${a}%</text>`).join("")}
+    <text x="${(W + P) / 2}" y="${H - 8}" text-anchor="middle">median seconds per answer →</text>
+    ${[0, .5, 1].map(f => `<text x="${x(f * maxL)}" y="${H - P + 16}" text-anchor="middle">${(f * maxL / 1000).toFixed(1)}</text>`).join("")}
+    ${stats.map(s => `<circle cx="${x(s.lat || 0)}" cy="${y(s.all)}" r="7" fill="var(--accent)" opacity=".85"><title>${esc(s.m)}: ${s.all}%</title></circle>
+      <text x="${x(s.lat || 0) + (x(s.lat || 0) > W - 140 ? -10 : 10)}" y="${y(s.all) + 4}" text-anchor="${x(s.lat || 0) > W - 140 ? "end" : "start"}" style="fill:var(--fg)">${esc(s.m.split("/").pop())}</text>`).join("")}
+  </svg>`;
+
+  $("fcat").innerHTML += cats.map(c => `<option>${esc(c)}</option>`).join("");
+  const byQ = {};
+  for (const r of D.results) (byQ[r.qid] ||= []).push(r);
+  const renderQs = () => {
+    const cat = $("fcat").value, show = $("fshow").value;
+    const qs = D.questions.filter(q => (!cat || q.category === cat) && (!show ||
+      (show === "split" && new Set(byQ[q.id].map(r => r.pass)).size > 1) ||
+      (show === "allfail" && byQ[q.id].every(r => !r.pass))));
+    $("qs").innerHTML = qs.map(q => `<div class="q">
+      <div class="muted">${esc(q.category)} · ${byQ[q.id].filter(r => r.pass).length}/${byQ[q.id].length} passed</div>
+      <div class="prompt">${esc(q.prompt)}</div>
+      <div class="muted">Expected: ${esc(q.answer)}</div>
+      ${stats.map(s => byQ[q.id].find(r => r.model === s.m)).filter(Boolean).map(r => `<div class="ans">
+        <span class="${r.pass ? "ok" : "no"}">${r.pass ? "✓" : "✗"}</span><span>${esc(r.model.split("/").pop())}</span>
+        <code>${esc(r.error ? "API error: " + r.error : r.answer || "(empty)")}</code></div>`).join("")}
+    </div>`).join("") || `<p class="muted">No questions match.</p>`;
+  };
+  $("fcat").oninput = $("fshow").oninput = renderQs;
+  renderQs();
+});
+</script>
+</body>
+</html>

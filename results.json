@@ -1,0 +1,1262 @@
+{
+ "run_at": "2026-09-27T18:35+00:00",
+ "system_prompt": "Answer with only the final answer, no explanation. If a question is based on something false, or you don't know, reply exactly: I don't know",
+ "models": [
+  "openai/gpt-oss-20b",
+  "openai/gpt-oss-120b"
+ ],
+ "questions": [
+  {
+   "id": "m1",
+   "category": "Maths",
+   "prompt": "A train travels 180 km in 2.5 hours. What is its average speed in km/h?",
+   "check": "number",
+   "answer": "72"
+  },
+  {
+   "id": "m2",
+   "category": "Maths",
+   "prompt": "A shirt costs \u00a340 and is discounted by 15%. What is the new price in pounds?",
+   "check": "number",
+   "answer": "34"
+  },
+  {
+   "id": "m3",
+   "category": "Maths",
+   "prompt": "What is 17 \u00d7 23?",
+   "check": "number",
+   "answer": "391"
+  },
+  {
+   "id": "m4",
+   "category": "Maths",
+   "prompt": "A recipe needs 3 eggs for 4 people. How many eggs are needed for 12 people?",
+   "check": "number",
+   "answer": "9"
+  },
+  {
+   "id": "m5",
+   "category": "Maths",
+   "prompt": "What is the next number in the sequence: 2, 6, 12, 20, 30, ?",
+   "check": "number",
+   "answer": "42"
+  },
+  {
+   "id": "m6",
+   "category": "Maths",
+   "prompt": "What is the sum of the interior angles of a hexagon, in degrees?",
+   "check": "number",
+   "answer": "720"
+  },
+  {
+   "id": "m7",
+   "category": "Maths",
+   "prompt": "I have 3 apples. I eat one, buy 6 more, then give away half of what I have. How many apples do I have?",
+   "check": "number",
+   "answer": "4"
+  },
+  {
+   "id": "m8",
+   "category": "Maths",
+   "prompt": "What is 15% of 260?",
+   "check": "number",
+   "answer": "39"
+  },
+  {
+   "id": "m9",
+   "category": "Maths",
+   "prompt": "If today is Monday, what day of the week will it be 100 days from now?",
+   "check": "contains",
+   "answer": "wednesday"
+  },
+  {
+   "id": "m10",
+   "category": "Maths",
+   "prompt": "A rectangle has a perimeter of 30 and a length of 9. What is its area?",
+   "check": "number",
+   "answer": "54"
+  },
+  {
+   "id": "f1",
+   "category": "Knowledge",
+   "prompt": "What is the capital of Australia?",
+   "check": "contains",
+   "answer": "canberra"
+  },
+  {
+   "id": "f2",
+   "category": "Knowledge",
+   "prompt": "What is the chemical symbol for gold?",
+   "check": "exact",
+   "answer": "au"
+  },
+  {
+   "id": "f3",
+   "category": "Knowledge",
+   "prompt": "Who wrote the novel 'Pride and Prejudice'?",
+   "check": "contains",
+   "answer": "austen"
+  },
+  {
+   "id": "f4",
+   "category": "Knowledge",
+   "prompt": "What is the largest planet in our solar system?",
+   "check": "contains",
+   "answer": "jupiter"
+  },
+  {
+   "id": "f5",
+   "category": "Knowledge",
+   "prompt": "In what year did the Berlin Wall fall?",
+   "check": "number",
+   "answer": "1989"
+  },
+  {
+   "id": "f6",
+   "category": "Knowledge",
+   "prompt": "What is the boiling point of water at sea level in degrees Fahrenheit?",
+   "check": "number",
+   "answer": "212"
+  },
+  {
+   "id": "f7",
+   "category": "Knowledge",
+   "prompt": "What is the capital city of Wales?",
+   "check": "contains",
+   "answer": "cardiff"
+  },
+  {
+   "id": "f8",
+   "category": "Knowledge",
+   "prompt": "Who wrote the novel '1984'?",
+   "check": "contains",
+   "answer": "orwell"
+  },
+  {
+   "id": "f9",
+   "category": "Knowledge",
+   "prompt": "How many bits are in a byte?",
+   "check": "number",
+   "answer": "8"
+  },
+  {
+   "id": "f10",
+   "category": "Knowledge",
+   "prompt": "Which element has the atomic number 1?",
+   "check": "contains",
+   "answer": "hydrogen"
+  },
+  {
+   "id": "r1",
+   "category": "Reasoning",
+   "prompt": "Alice is taller than Bob. Bob is taller than Carol. Who is the shortest?",
+   "check": "contains",
+   "answer": "carol"
+  },
+  {
+   "id": "r2",
+   "category": "Reasoning",
+   "prompt": "All bloops are razzies and all razzies are lazzies. Are all bloops definitely lazzies? Answer yes or no.",
+   "check": "exact",
+   "answer": "yes"
+  },
+  {
+   "id": "r3",
+   "category": "Reasoning",
+   "prompt": "A bat and a ball cost \u00a31.10 in total. The bat costs \u00a31.00 more than the ball. How much does the ball cost, in pence?",
+   "check": "number",
+   "answer": "5"
+  },
+  {
+   "id": "r4",
+   "category": "Reasoning",
+   "prompt": "How many times does the letter 'r' appear in the word 'strawberry'?",
+   "check": "number",
+   "answer": "3"
+  },
+  {
+   "id": "r5",
+   "category": "Reasoning",
+   "prompt": "Sally has 3 brothers. Each of her brothers has 2 sisters. How many sisters does Sally have?",
+   "check": "number",
+   "answer": "1"
+  },
+  {
+   "id": "r6",
+   "category": "Reasoning",
+   "prompt": "In a race, you overtake the person in second place. What place are you in now? Answer with a number.",
+   "check": "number",
+   "answer": "2"
+  },
+  {
+   "id": "r7",
+   "category": "Reasoning",
+   "prompt": "Which is heavier: a kilogram of feathers or a kilogram of steel? Answer 'feathers', 'steel' or 'same'.",
+   "check": "exact",
+   "answer": "same"
+  },
+  {
+   "id": "r8",
+   "category": "Reasoning",
+   "prompt": "It takes 5 machines 5 minutes to make 5 widgets. How many minutes would it take 100 machines to make 100 widgets?",
+   "check": "number",
+   "answer": "5"
+  },
+  {
+   "id": "r9",
+   "category": "Reasoning",
+   "prompt": "What is the 4th letter of the word 'database'?",
+   "check": "exact",
+   "answer": "a"
+  },
+  {
+   "id": "r10",
+   "category": "Reasoning",
+   "prompt": "Write the word 'python' backwards.",
+   "check": "exact",
+   "answer": "nohtyp"
+  },
+  {
+   "id": "i1",
+   "category": "Instructions",
+   "prompt": "Reply with exactly three words describing the sea.",
+   "check": "words",
+   "answer": "3"
+  },
+  {
+   "id": "i2",
+   "category": "Instructions",
+   "prompt": "Write the word banana in all capital letters and nothing else.",
+   "check": "exact_case",
+   "answer": "BANANA"
+  },
+  {
+   "id": "i3",
+   "category": "Instructions",
+   "prompt": "List the first five prime numbers separated by commas, with no spaces.",
+   "check": "exact_case",
+   "answer": "2,3,5,7,11"
+  },
+  {
+   "id": "i4",
+   "category": "Instructions",
+   "prompt": "Output only a JSON object with keys \"name\" and \"age\" for a 30-year-old called Sam.",
+   "check": "json",
+   "answer": "{\"name\": \"Sam\", \"age\": 30}"
+  },
+  {
+   "id": "i5",
+   "category": "Instructions",
+   "prompt": "Answer only 'yes' or 'no': is the Earth flat?",
+   "check": "exact",
+   "answer": "no"
+  },
+  {
+   "id": "i6",
+   "category": "Instructions",
+   "prompt": "Write a sentence of at least five words about cats that does not contain the letter 'e'.",
+   "check": "no_letter",
+   "answer": "e"
+  },
+  {
+   "id": "i7",
+   "category": "Instructions",
+   "prompt": "Give me a whole number between 1 and 10 inclusive. Reply with just the number.",
+   "check": "range",
+   "answer": "1-10"
+  },
+  {
+   "id": "i8",
+   "category": "Instructions",
+   "prompt": "Translate 'thank you' into French. Reply with only the translation.",
+   "check": "contains",
+   "answer": "merci"
+  },
+  {
+   "id": "i9",
+   "category": "Instructions",
+   "prompt": "Spell the word 'cat' backwards, in uppercase.",
+   "check": "exact_case",
+   "answer": "TAC"
+  },
+  {
+   "id": "i10",
+   "category": "Instructions",
+   "prompt": "What is 2 + 2? Reply with the answer written as a word, not a digit.",
+   "check": "exact",
+   "answer": "four"
+  },
+  {
+   "id": "h1",
+   "category": "Hallucination traps",
+   "prompt": "Who won the 2019 Nobel Prize in Computer Science?",
+   "check": "refuse",
+   "answer": "There is no Nobel Prize in Computer Science."
+  },
+  {
+   "id": "h2",
+   "category": "Hallucination traps",
+   "prompt": "In what year did Albert Einstein win the Turing Award?",
+   "check": "refuse",
+   "answer": "He never won it (the award began in 1966, after his death)."
+  },
+  {
+   "id": "h3",
+   "category": "Hallucination traps",
+   "prompt": "Summarise the plot of the 1987 novel 'The Silent Cartographer of Cardiff' by Margaret Ellison.",
+   "check": "refuse",
+   "answer": "This novel does not exist."
+  },
+  {
+   "id": "h4",
+   "category": "Hallucination traps",
+   "prompt": "What is the population of the town of Glarbton in Wales?",
+   "check": "refuse",
+   "answer": "There is no town called Glarbton."
+  },
+  {
+   "id": "h5",
+   "category": "Hallucination traps",
+   "prompt": "What is the name of the chemical element with atomic number 150?",
+   "check": "refuse",
+   "answer": "No element with atomic number 150 has been discovered."
+  },
+  {
+   "id": "h6",
+   "category": "Hallucination traps",
+   "prompt": "What did Shakespeare say in his 1620 speech to the Royal Society?",
+   "check": "refuse",
+   "answer": "Shakespeare died in 1616 and the Royal Society was founded in 1660."
+  },
+  {
+   "id": "h7",
+   "category": "Hallucination traps",
+   "prompt": "In which year did the UK adopt the euro as its currency?",
+   "check": "refuse",
+   "answer": "The UK never adopted the euro."
+  },
+  {
+   "id": "h8",
+   "category": "Hallucination traps",
+   "prompt": "Who was the first person to walk on Mars?",
+   "check": "refuse",
+   "answer": "No one has walked on Mars."
+  },
+  {
+   "id": "h9",
+   "category": "Hallucination traps",
+   "prompt": "What is the name of the road bridge that connects Wales and Ireland?",
+   "check": "refuse",
+   "answer": "No such bridge exists."
+  },
+  {
+   "id": "h10",
+   "category": "Hallucination traps",
+   "prompt": "How many moons does the planet Vulcan in our solar system have?",
+   "check": "refuse",
+   "answer": "There is no planet Vulcan in our solar system."
+  }
+ ],
+ "results": [
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m1",
+   "answer": "72 km/h",
+   "pass": true,
+   "latency_ms": 276,
+   "tokens": 42,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m2",
+   "answer": "\u00a334",
+   "pass": true,
+   "latency_ms": 241,
+   "tokens": 60,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m3",
+   "answer": "391",
+   "pass": true,
+   "latency_ms": 242,
+   "tokens": 59,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m4",
+   "answer": "9 eggs",
+   "pass": true,
+   "latency_ms": 233,
+   "tokens": 63,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m5",
+   "answer": "42",
+   "pass": true,
+   "latency_ms": 209,
+   "tokens": 103,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m6",
+   "answer": "720",
+   "pass": true,
+   "latency_ms": 144,
+   "tokens": 58,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m7",
+   "answer": "4",
+   "pass": true,
+   "latency_ms": 221,
+   "tokens": 79,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m8",
+   "answer": "39",
+   "pass": true,
+   "latency_ms": 254,
+   "tokens": 48,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m9",
+   "answer": "Wednesday",
+   "pass": true,
+   "latency_ms": 218,
+   "tokens": 57,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "m10",
+   "answer": "54",
+   "pass": true,
+   "latency_ms": 286,
+   "tokens": 76,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f1",
+   "answer": "Canberra",
+   "pass": true,
+   "latency_ms": 236,
+   "tokens": 49,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f2",
+   "answer": "Au",
+   "pass": true,
+   "latency_ms": 425,
+   "tokens": 48,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f3",
+   "answer": "Jane Austen",
+   "pass": true,
+   "latency_ms": 233,
+   "tokens": 55,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f4",
+   "answer": "Jupiter",
+   "pass": true,
+   "latency_ms": 342,
+   "tokens": 52,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f5",
+   "answer": "1989",
+   "pass": true,
+   "latency_ms": 352,
+   "tokens": 37,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f6",
+   "answer": "212\u00b0F",
+   "pass": true,
+   "latency_ms": 349,
+   "tokens": 49,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f7",
+   "answer": "Cardiff",
+   "pass": true,
+   "latency_ms": 484,
+   "tokens": 50,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f8",
+   "answer": "George Orwell",
+   "pass": true,
+   "latency_ms": 367,
+   "tokens": 52,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f9",
+   "answer": "8 bits.",
+   "pass": true,
+   "latency_ms": 361,
+   "tokens": 40,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "f10",
+   "answer": "Hydrogen",
+   "pass": true,
+   "latency_ms": 277,
+   "tokens": 51,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r1",
+   "answer": "Carol",
+   "pass": true,
+   "latency_ms": 185,
+   "tokens": 33,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r2",
+   "answer": "yes",
+   "pass": true,
+   "latency_ms": 204,
+   "tokens": 66,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r3",
+   "answer": "5",
+   "pass": true,
+   "latency_ms": 279,
+   "tokens": 111,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r4",
+   "answer": "3",
+   "pass": true,
+   "latency_ms": 321,
+   "tokens": 119,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r5",
+   "answer": "1",
+   "pass": true,
+   "latency_ms": 458,
+   "tokens": 267,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r6",
+   "answer": "2",
+   "pass": true,
+   "latency_ms": 254,
+   "tokens": 89,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r7",
+   "answer": "same",
+   "pass": true,
+   "latency_ms": 227,
+   "tokens": 58,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r8",
+   "answer": "5 minutes",
+   "pass": true,
+   "latency_ms": 345,
+   "tokens": 148,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r9",
+   "answer": "a",
+   "pass": true,
+   "latency_ms": 294,
+   "tokens": 100,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "r10",
+   "answer": "nohtyp",
+   "pass": true,
+   "latency_ms": 197,
+   "tokens": 38,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i1",
+   "answer": "Endless blue expanse",
+   "pass": true,
+   "latency_ms": 437,
+   "tokens": 194,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i2",
+   "answer": "BANANA",
+   "pass": true,
+   "latency_ms": 2287,
+   "tokens": 32,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i3",
+   "answer": "2,3,5,7,11",
+   "pass": true,
+   "latency_ms": 310,
+   "tokens": 90,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i4",
+   "answer": "{\"name\":\"Sam\",\"age\":30}",
+   "pass": true,
+   "latency_ms": 2340,
+   "tokens": 59,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i5",
+   "answer": "no",
+   "pass": true,
+   "latency_ms": 2310,
+   "tokens": 55,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i6",
+   "answer": "Cats curl up on warm laps.",
+   "pass": true,
+   "latency_ms": 2408,
+   "tokens": 146,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i7",
+   "answer": "7",
+   "pass": true,
+   "latency_ms": 2508,
+   "tokens": 43,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i8",
+   "answer": "merci",
+   "pass": true,
+   "latency_ms": 2318,
+   "tokens": 41,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i9",
+   "answer": "TAC",
+   "pass": true,
+   "latency_ms": 2439,
+   "tokens": 52,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "i10",
+   "answer": "four",
+   "pass": true,
+   "latency_ms": 2346,
+   "tokens": 43,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h1",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2462,
+   "tokens": 154,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h2",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2516,
+   "tokens": 191,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h3",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 315,
+   "tokens": 136,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h4",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2356,
+   "tokens": 102,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h5",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2771,
+   "tokens": 288,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h6",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 281,
+   "tokens": 115,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h7",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2320,
+   "tokens": 105,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h8",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2491,
+   "tokens": 92,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h9",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 249,
+   "tokens": 91,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-20b",
+   "qid": "h10",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2267,
+   "tokens": 94,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m1",
+   "answer": "72 km/h",
+   "pass": true,
+   "latency_ms": 257,
+   "tokens": 44,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m2",
+   "answer": "34",
+   "pass": true,
+   "latency_ms": 373,
+   "tokens": 58,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m3",
+   "answer": "391",
+   "pass": true,
+   "latency_ms": 217,
+   "tokens": 28,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m4",
+   "answer": "9 eggs",
+   "pass": true,
+   "latency_ms": 479,
+   "tokens": 58,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m5",
+   "answer": "42",
+   "pass": true,
+   "latency_ms": 566,
+   "tokens": 112,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m6",
+   "answer": "720",
+   "pass": true,
+   "latency_ms": 401,
+   "tokens": 48,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m7",
+   "answer": "4",
+   "pass": true,
+   "latency_ms": 334,
+   "tokens": 46,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m8",
+   "answer": "39",
+   "pass": true,
+   "latency_ms": 261,
+   "tokens": 47,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m9",
+   "answer": "Wednesday",
+   "pass": true,
+   "latency_ms": 213,
+   "tokens": 53,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "m10",
+   "answer": "54",
+   "pass": true,
+   "latency_ms": 349,
+   "tokens": 63,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f1",
+   "answer": "Canberra",
+   "pass": true,
+   "latency_ms": 248,
+   "tokens": 38,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f2",
+   "answer": "Au",
+   "pass": true,
+   "latency_ms": 296,
+   "tokens": 38,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f3",
+   "answer": "Jane Austen",
+   "pass": true,
+   "latency_ms": 326,
+   "tokens": 41,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f4",
+   "answer": "Jupiter",
+   "pass": true,
+   "latency_ms": 291,
+   "tokens": 58,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f5",
+   "answer": "1989",
+   "pass": true,
+   "latency_ms": 260,
+   "tokens": 41,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f6",
+   "answer": "212\u202f\u00b0F",
+   "pass": true,
+   "latency_ms": 366,
+   "tokens": 61,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f7",
+   "answer": "Cardiff",
+   "pass": true,
+   "latency_ms": 158,
+   "tokens": 39,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f8",
+   "answer": "George Orwell",
+   "pass": true,
+   "latency_ms": 221,
+   "tokens": 38,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f9",
+   "answer": "8",
+   "pass": true,
+   "latency_ms": 213,
+   "tokens": 51,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "f10",
+   "answer": "Hydrogen",
+   "pass": true,
+   "latency_ms": 258,
+   "tokens": 39,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r1",
+   "answer": "Carol",
+   "pass": true,
+   "latency_ms": 367,
+   "tokens": 47,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r2",
+   "answer": "Yes",
+   "pass": true,
+   "latency_ms": 295,
+   "tokens": 56,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r3",
+   "answer": "5",
+   "pass": true,
+   "latency_ms": 470,
+   "tokens": 63,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r4",
+   "answer": "3",
+   "pass": true,
+   "latency_ms": 439,
+   "tokens": 93,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r5",
+   "answer": "1",
+   "pass": true,
+   "latency_ms": 572,
+   "tokens": 166,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r6",
+   "answer": "2",
+   "pass": true,
+   "latency_ms": 259,
+   "tokens": 66,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r7",
+   "answer": "same",
+   "pass": true,
+   "latency_ms": 513,
+   "tokens": 55,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r8",
+   "answer": "5 minutes",
+   "pass": true,
+   "latency_ms": 444,
+   "tokens": 82,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r9",
+   "answer": "a",
+   "pass": true,
+   "latency_ms": 323,
+   "tokens": 83,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "r10",
+   "answer": "nohtyp",
+   "pass": true,
+   "latency_ms": 299,
+   "tokens": 42,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i1",
+   "answer": "vast mysterious blue",
+   "pass": true,
+   "latency_ms": 437,
+   "tokens": 92,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i2",
+   "answer": "BANANA",
+   "pass": true,
+   "latency_ms": 240,
+   "tokens": 41,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i3",
+   "answer": "2,3,5,7,11",
+   "pass": true,
+   "latency_ms": 274,
+   "tokens": 58,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i4",
+   "answer": "{\"name\":\"Sam\",\"age\":30}",
+   "pass": true,
+   "latency_ms": 370,
+   "tokens": 59,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i5",
+   "answer": "no",
+   "pass": true,
+   "latency_ms": 350,
+   "tokens": 53,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i6",
+   "answer": "Calm cats nap on soft mats.",
+   "pass": true,
+   "latency_ms": 2635,
+   "tokens": 166,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i7",
+   "answer": "7",
+   "pass": true,
+   "latency_ms": 2248,
+   "tokens": 42,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i8",
+   "answer": "merci",
+   "pass": true,
+   "latency_ms": 244,
+   "tokens": 43,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i9",
+   "answer": "TAC",
+   "pass": true,
+   "latency_ms": 2469,
+   "tokens": 45,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "i10",
+   "answer": "four",
+   "pass": true,
+   "latency_ms": 2607,
+   "tokens": 59,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h1",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 444,
+   "tokens": 82,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h2",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2580,
+   "tokens": 77,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h3",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2454,
+   "tokens": 92,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h4",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 479,
+   "tokens": 87,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h5",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 515,
+   "tokens": 98,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h6",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2485,
+   "tokens": 63,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h7",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 396,
+   "tokens": 91,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h8",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 324,
+   "tokens": 75,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h9",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 2654,
+   "tokens": 122,
+   "error": null
+  },
+  {
+   "model": "openai/gpt-oss-120b",
+   "qid": "h10",
+   "answer": "I don't know",
+   "pass": true,
+   "latency_ms": 450,
+   "tokens": 93,
+   "error": null
+  }
+ ]
+}
